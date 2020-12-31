@@ -20,7 +20,7 @@ const state = (payload, say, sendButton) => {
 	    say('Stack is a collection of items that literally “stack” on top of each other. It follows the “Last In First Out” principle, meaning you could only add, remove, and look at the item on the top.');
 	    
 	    say('Think of a stack as a literal “stack” of shirts. You are only allowed to take the topmost shirt or add to the top of the stack, while the rest of the shirts are not accessible to you.').then(
-        () => {sendButton('Got it?', [{title: 'yes!', payload: payload.substring(0,2)+'A1'}]);
+        () => {sendButton('Got it? 🤠', [{title: 'yes!', payload: payload.substring(0,2)+'A1'}]);
     });
     
     }

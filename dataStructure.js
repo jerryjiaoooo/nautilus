@@ -54,8 +54,12 @@ const state = (payload, say, sendButton) => {
 	}
 	// quiz section
 	if (payload.substring(2) === 'A5') {
-		say(['Quiz time!', 'What will the stack look like after performing these operations?'
+		say(['Quiz time!', 'What will the stack look like after performing these operations?', 
+		     'Push 🤠\n Push ✨\n Pop\n Push ✌️\n Push 😁']);
+		// answer choices 
+		sendButton([{title: '🤠✨✌️😁', payload: payload.substring(0,4)+'a'}, {title: '🤠✌️😁', payload: payload.substring(0,4)+'b'}, {title: '😁✌️✨🤠', payload: payload.substring(0,4)+'c'}, {title: '😁✌️🤠', payload: payload.substring(0,4)+'d'}]);
 	}
+	
 			   
 
 sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);

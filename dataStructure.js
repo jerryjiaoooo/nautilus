@@ -57,7 +57,47 @@ const state = (payload, say, sendButton) => {
 		say(['Quiz time!', 'What will the stack look like after performing these operations?', 
 		     'Push 🤠\n Push ✨\n Pop\n Push ✌️\n Push 😁']);
 		// answer choices 
-		sendButton([{title: '🤠✨✌️😁', payload: payload.substring(0,4)+'a'}, {title: '🤠✌️😁', payload: payload.substring(0,4)+'b'}, {title: '😁✌️✨🤠', payload: payload.substring(0,4)+'c'}, {title: '😁✌️🤠', payload: payload.substring(0,4)+'d'}]);
+		sendButton('All the choices below are from arranged from top to bottom:', [{title: '🤠✨✌️😁', payload: payload.substring(0,4)+'a'}, {title: '🤠✌️😁', payload: payload.substring(0,4)+'b'}, {title: '😁✌️✨🤠', payload: payload.substring(0,4)+'c'}, {title: '😁✌️🤠', payload: payload.substring(0,4)+'d'}]);
+	}
+	// incorrect
+	if (payload.substring(4) === 'a') {
+		say('Incorrect. Stacks are first in last out, meaning 🤠 goes to the "bottom" of the stack, and anything pushed after goes on top. And the popping would remove the ✨!');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A6'}]);
+	}
+	// incorrect
+	if (payload.substring(4) === 'b') {
+		say('Incorrect. Stacks are first in last out, meaning 🤠 goes to the "bottom" of the stack, and anything pushed after goes on top.');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A6'}]);
+	}
+	// correct
+	if (payload.substring(4) === 'd') {
+		say('Correct!');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A6'}]);
+	}
+	// incorrect
+	if (payload.substring(4) === 'c') {
+		say('Incorrect. Close, but you seem to have forgotten to pop ✨!');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A6'}]);
+	}
+	// next quiz question
+	if (payload.substring(2) === 'A6') {
+		say('The stack now looks like (top)😁✌️🤠(bottom). What does popping the stack return?');
+		sendButton('', [{title: 😁, payload: payload.substring(0,2) + 'a'}, {title: ✌️, payload: payload.substring(0,2) + 'b'}, {title: 🤠, payload: payload.substring(0,2) + 'c'}]);
+	}
+	//correct
+	if (payload.substring(3) === 'a') {
+		say('Correct!');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
+	}
+	// incorrect
+	if (payload.substring(3) === 'b') {
+		say('Incorrect. Stacks are first in last out, meaning the last in, or the top of the stack, is the first out. Popping would return and remove 😁 from the stack.');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
+	}
+	// incorrect
+	if (payload.substring(3) === 'c') {
+		say('Incorrect. Stacks are first in last out, meaning the last in, or the top of the stack, is the first out. Popping would return and remove 😁 from the stack.');
+		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
 	}
 	
 			   

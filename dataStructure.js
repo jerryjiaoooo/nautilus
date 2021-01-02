@@ -25,7 +25,7 @@ const state = (payload, say, sendButton) => {
     	if (payload.substring(2) === 'A1') {
    	 say(['Ok!', 'Now, we will learn about the push method. The push method adds an item on top of your existing stack. It’s like putting a new shirt onto your stack of shirts!']);
 	 say({
-		attachment: 'stacks_push',
+		attachment: 'image',
 		url: 'https://i.postimg.cc/qq8C1dZ6/IMG-0230.jpg'
 	 });
 	 sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A2'}]);   
@@ -82,27 +82,27 @@ const state = (payload, say, sendButton) => {
 	// next quiz question
 	if (payload.substring(2) === 'A6') {
 		say('The stack now looks like (top)😁✌️🤠(bottom). What does popping the stack return?');
-		sendButton('', [{title: 😁, payload: payload.substring(0,2) + 'a'}, {title: ✌️, payload: payload.substring(0,2) + 'b'}, {title: 🤠, payload: payload.substring(0,2) + 'c'}]);
+		sendButton('Question', [{title: '😁', payload: payload.substring(0,2) + 'a'}, {title: '✌️', payload: payload.substring(0,2) + 'b'}, {title: '🤠', payload: payload.substring(0,2) + 'c'}]);
 	}
 	//correct
-	if (payload.substring(3) === 'a') {
+	if (payload.substring(2) === 'a') {
 		say('Correct!');
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
 	}
 	// incorrect
-	if (payload.substring(3) === 'b') {
+	if (payload.substring(2) === 'b') {
 		say('Incorrect. Stacks are first in last out, meaning the last in, or the top of the stack, is the first out. Popping would return and remove 😁 from the stack.');
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
 	}
 	// incorrect
-	if (payload.substring(3) === 'c') {
+	if (payload.substring(2) === 'c') {
 		say('Incorrect. Stacks are first in last out, meaning the last in, or the top of the stack, is the first out. Popping would return and remove 😁 from the stack.');
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
 	}
 	
-			   
-
-sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);
+	if (payload.substring(2)==='A7'){
+		sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);
+	}
 
     //QUEUES (start with 'B')
     if (payload.substring(2)==='B0'){
@@ -123,12 +123,72 @@ sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2
     
     
     //END STATEMENTS
+	
+	// FINAL QUIZ
     if (payload==='TTAf' || payload==='TTBf'){
-        say('Congrats!').then(
-        () => {sendButton('restart? ', [{title: 'yes', payload: 'restart'},'No']);
+        say('READY FOR FINAL QUIZ??').then(
+        () => {sendButton('🤩', [{title: 'yes!', payload: 'F1'}]);
     });
     }
+	
+	if (payload==='F1'){
+		
+			say('What principle does STACK follow?').then(
+		() => {sendButton('Question', [{title: 'First In First Out', payload: 'F2'}, {title: 'Last In First Out', payload: 'F3'}]);
+				});
+	}
+	
+	if (payload === 'F2') {
+		say('Incorrect. The correct answer is Last In First Out.').then(
+		() => {sendButton('Next Question?', [{title: 'Ready!', payload: 'F4'}]);
+				});
+	}
+	
+	if (payload ==='F3'){
+		say ('Correct!').then(
+		() => {sendButton('Next Question?', [{title: 'Ready!', payload: 'F4'}]);
+				});
+	}
+	
+	if (payload==='F4'){
+		
+			say('What principle does Queue follow?').then(
+		() => {sendButton('Question', [{title: 'First In First Out', payload: 'F5'}, {title: 'Last In First Out', payload: 'F6'}]);
+				});
+	}
+	
+	if (payload === 'F6') {
+		say('Incorrect. The correct answer is First In First Out.');
+		sendButton('Next Question?', [{title: 'Ready!', payload: 'F7'}]);
+	}
+	
+	if (payload ==='F5'){
+		say ('Correct!').then(
+		()=>{sendButton('Next Question?', [{title: 'Ready!', payload: 'F7'}]);
+				});
+	}
+	
+	if (payload==='F7'){
+		
+			say('What data structure is used to solve recursive problems?').then(
+		()=> {sendButton('Question', [{title: 'Stack', payload: 'F8'}, {title: 'Queue', payload: 'F9'}]);
+				});
+	}
+	
+	if (payload === 'F9') {
+		say('Incorrect. The correct answer is Stack. Because in recursive problems, you want to tackle the most fundamental problem and work your way BACKWARD, remember stack is Last In First Out! On the other hand, queues are used to solve sequential problems. \n CONGRATS, YOU HAVE MASTERED STACKS AND QUEUES!!🎉').then(
+		() => {sendButton('restart?', [{title: 'learn it again!', payload: 'restart'},'No']);
+				});
+	}
+	
+	if (payload ==='F8'){
+		say ('Correct! \n CONGRATS, YOU HAVE MASTERED STACKS AND QUEUES!!🎉').then(
+		()=>{sendButton('restart?', [{title: 'learn it again!', payload: 'restart'},'No']);
+				});
+	}
+
     
+	// GO TO THE LESSON NOT YET LEARNED
     if (payload === 'TFAf'){
         say('').then(
         () => {sendButton('Learn queues now? ', [{title: 'yes', payload: 'TTB0'},'No']);
@@ -149,7 +209,7 @@ module.exports = {
 	filename: 'es',
 	title: 'Data Structure',
 	introduction: [
-		'Welcome! This is a lesson on stacks and queues, two different yet similar data structures. A data structure is a data organization, management, and storage format that enables efficient access and modification. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data.!!'
+		'Welcome! This is a lesson on stacks and queues, two different yet similar data structures. A data structure is a data organization, management, and storage format that enables efficient access and modification. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data!!'
 	],
 	start: start,
 	state: state

@@ -129,135 +129,107 @@ const state = (payload, say, sendButton) => {
 	}
 
     //QUEUES (start with 'B')
-    if (payload.substring(2)==='B0'){
-        say ('A queue is a collection of entities that forms a “queue”. It follows the “First in first out” principle, meaning items can only be added at the end of the queue and removed at the beginning.');
-        say('Now think of a queue like the shirts that line up in your closet. You are only allowed to put a new shirt at the end of the queue and take out the first piece of cloth. Meanwhile, you can also peek at the start of the queue, which means you can take a look at the first shirt in your closet.').then(
-        () => {sendButton('Got it?', [{title: 'yes!', payload: payload.substring(0,2)+'B1'}]);
-    });
-        
-    }
-    
-    if (payload.substring(2) === 'B1') {
-    say('ok!').then(
-        () => {sendButton('Done with queues! ', [{title: 'yes ', payload: payload.substring(0,2)+'Bf'}]);
-    });
-    }
-    
-     //QUEUES (start with 'B')
-    if (payload.substring(2)==='B0'){
-        say ('A queue is a collection of entities that forms a “queue”. It follows the “First in first out” principle, meaning items can only be added at the end of the queue and removed at the beginning.');
-        say('Now think of a queue like the shirts that line up in your closet. You are only allowed to put a new shirt at the end of the queue and take out the first piece of cloth. Meanwhile, you can also peek at the start of the queue, which means you can take a look at the first shirt in your closet.'
-        ).then(
-        () => {sendButton('Got it?', [{title: 'yes!', payload: payload.substring(0,2)+'B1'}]);
-    });
-    }
+	if (payload.substring(2)==='B0'){
+		say ('A queue is a collection of entities that forms a “queue”. It follows the “First in first out” principle, meaning items can only be added at the end of the queue and removed at the beginning.');
+		say('Now think of a queue like the shirts that line up in your closet. You are only allowed to put a new shirt at the end of the queue and take out the first piece of cloth. Meanwhile, you can also peek at the start of the queue, which means you can take a look at the first shirt in your closet.'
+		).then(
+		() => {sendButton('Got it?', [{title: 'yes!', payload: payload.substring(0,2)+'B1'}]);
+	    });
+	}
 
 	// enqueue method
-    if (payload.substring(2) === 'B1') {
-        say(['Ok!', 'Now, we will learn about the enqueue method. The enqueue operation allows you to input an item at the end of the queue. It is like hanging up one shirt at the end of the queue of clothes.',
-        'Using the same queue as before, we perform the following operations.']);
-	 say({
+    	if (payload.substring(2) === 'B1') {
+		say(['Ok!', 'Now, we will learn about the enqueue method. The enqueue operation allows you to input an item at the end of the queue. It is like hanging up one shirt at the end of the queue of clothes.',
+		'Using the same queue as before, we perform the following operations.']);
+		 say({
+			attachment: 'image',
+			url: 'url'
+		 }).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B2'}]);});
+	 }
+
+    	// dequeue method
+	if (payload.substring(2) === 'B2') {
+		say(['Ok!', 'The dequeue operation allows you to remove an item at the start of the queue. You can think of it as taking the first shirt out of your closet. However, be careful when you dequeue because the queue might be empty and there’s nothing you can take from it!', 
+		'BONUS concept: most implementation of dequeue actually returns the item which you removed. Think of this as you’re holding onto the shirt that you just took off the queue for other purposes (perhaps you want to “enqueue” it onto another queue!)', 
+		'Using the same queue as before, we perform the following operations.']);
+		say({
 		attachment: 'image',
 		url: 'url'
-	 }).then(() 
-	 => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B2'}]);  
-		});
-    }
-
-    // dequeue method
-    if (payload.substring(2) === 'B2') {
-        say(['Ok!', 'The dequeue operation allows you to remove an item at the start of the queue. You can think of it as taking the first shirt out of your closet. However, be careful when you dequeue because the queue might be empty and there’s nothing you can take from it!', 
-        'BONUS concept: most implementation of dequeue actually returns the item which you removed. Think of this as you’re holding onto the shirt that you just took off the queue for other purposes (perhaps you want to “enqueue” it onto another queue!)', 
-        'Using the same queue as before, we perform the following operations.']);
-        say({
-        attachment: 'image',
-        url: 'url'
-        }).then(() 
-        => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B3'}]);   
-        });
+		}).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B3'}]);   
+	});
+    	}
     
-    // peek method
-    if (payload.substring(2) === 'B3') {
-        say(['Ok!', 'The peek operation allows you to get the value of the next element to be dequeued, without dequeuing it. Think of it as taking a look at the first shirt in your closet without taking it out.', 
-        'Using the same queue as before, we perform the following operations.']);
-        say({
-        attachment: 'image',
-        url: 'url'
-        }).then(() 
-        => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B4'}]);   
-        });  
-    }
+    	// peek method
+    	if (payload.substring(2) === 'B3') {
+		say(['Ok!', 'The peek operation allows you to get the value of the next element to be dequeued, without dequeuing it. Think of it as taking a look at the first shirt in your closet without taking it out.', 
+		'Using the same queue as before, we perform the following operations.']);
+		say({
+		attachment: 'image',
+		url: 'url'
+		}).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B4'}]);   
+	});  
+    	}
     
-    // ready for quiz?    
+    	// ready for quiz?    
 	if (payload.substring(2) === 'B4') {	
-		say('If you combine the example operations from peek, enqueue, and dequeue, you would have an example of multiple operations done on a single queue.').then(() 
-	 => {
+		say('If you combine the example operations from peek, enqueue, and dequeue, you would have an example of multiple operations done on a single queue.').then(() => {
 		sendButton('Ready for the quiz?', [{title: 'Ready!', payload: payload.substring(0,2)+'B5'}, {title: 'Review', payload: payload.substring(0,2)+'B0'}]); // returns to the beginning of queue, B0
 	});  
-    }
+    	}
     
-	// quiz section
+    	// quiz section
 	if (payload.substring(2) === 'B5') {
 		say(['Quiz time!', 'What will the queue look like after performing these operations?', 
-		     'Enqueue 👍\n Enqueue ✨\n Dequeue\n Enqueue 😁\n Dequeue\n Enqueue 🎉\n']).then(() 
-	 => { 
-		// answer choices 👍    👍✨   ✨    ✨😁   😁    😁🎉
+		     'Enqueue 👍\n Enqueue ✨\n Dequeue\n Enqueue 😁\n Dequeue\n Enqueue 🎉\n']).then(() => { 
 		sendButton('All the choices below are from arranged from front to back:', [{title: '😁🎉', payload: payload.substring(0,4)+'a'}, {title: '👍🎉', payload: payload.substring(0,4)+'b'}]);
 	});
-    }
+    	}
     
-    // correct
+    	// correct
 	if (payload.substring(2) === 'B5a') {
-		say('Correct!').then(() 
-	 => {
+		say('Correct!').then(() => {
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B6'}]);
 	});
 	}
 
 	// incorrect
 	if (payload.substring(2) === 'B5b') {
-		say('Incorrect. Queuess are first in first out, meaning 👍 goes to the front of the queue, and anything enqueued after go to the back. And the first dequeue would remove 👍!').then(() 
-	 => {
+		say('Incorrect. Queuess are first in first out, meaning 👍 goes to the front of the queue, and anything enqueued after go to the back. And the first dequeue would remove 👍!').then(() => {
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B6'}]);
 	});
 	}
     
 	// next quiz question
 	if (payload.substring(2) === 'B6') {
-		say('The queue now is (front)😁👍🎉(back). What does the queue look like after two dequeues?').then(() 
-	 => {
+		say('The queue now is (front)😁👍🎉(back). What does the queue look like after two dequeues?').then(() => {
 		sendButton('Question', [{title: '🎉', payload: payload.substring(0,4) + 'a'}, {title: 'There is nothing in the queue.', payload: payload.substring(0,4) + 'b'}, {title: '😁', payload: payload.substring(0,4) + 'c'}]);
 	});
 	}
 	// correct
 	if (payload.substring(2) === 'B6a') {
-		say('Correct!').then(() 
-	 => {
+		say('Correct!').then(() => {
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B7'}]);
 	});
 	}
 
 	// incorrect
 	if (payload.substring(2) === 'B6b') {
-		say('Incorrect. We only dequeued twice while there are three emojis in the queue. meaning there has to be one emoji left in the queue. ').then(() 
-	 => {
+		say('Incorrect. We only dequeued twice while there are three emojis in the queue. meaning there has to be one emoji left in the queue. ').then(() => {
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B7'}]);
 	});
 	}
     
-    // incorrect
+    	// incorrect
 	if (payload.substring(2) === 'B6c') {
-		say('Incorrect. Queues are first in first out, meaning it dequeues from the beginning. So 😁 and 👍 are dequeued.').then(() 
-	 => {
+		say('Incorrect. Queues are first in first out, meaning it dequeues from the beginning. So 😁 and 👍 are dequeued.').then(() => {
 		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B7'}]);
 	});
 	}
 
-    // end of queues
+    	// end of queues
 	if (payload.substring(2)==='B7'){
 		sendButton('Done with queues! ', [{title: 'yes ', payload: payload.substring(0,2)+'Bf'}]);
 	}
-    
     
     
     //END STATEMENTS

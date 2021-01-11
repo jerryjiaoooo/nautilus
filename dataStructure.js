@@ -132,7 +132,7 @@ const state = (payload, say, sendButton) => {
 		'Using the same queue as before, we perform the following operations.']);
 		 say({
 			attachment: 'image',
-			url: 'url'
+			url: 'https://i.postimg.cc/nrTSfVVx/enqueue.jpg'
 		 }).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B2'}]);});
 	 }
 
@@ -143,7 +143,7 @@ const state = (payload, say, sendButton) => {
 		'Using the same queue as before, we perform the following operations.']);
 		say({
 		attachment: 'image',
-		url: 'url'
+		url: 'https://i.postimg.cc/WbC6FqHK/dequeue.jpg'
 		}).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B3'}]);   
 	});
     	}
@@ -154,7 +154,7 @@ const state = (payload, say, sendButton) => {
 		'Using the same queue as before, we perform the following operations.']);
 		say({
 		attachment: 'image',
-		url: 'url'
+		url: 'https://i.postimg.cc/mD1TrqzK/peek.jpg'
 		}).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B4'}]);   
 	});  
     	}

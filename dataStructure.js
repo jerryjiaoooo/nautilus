@@ -128,8 +128,7 @@ const state = (payload, say, sendButton) => {
 
 	// enqueue method
     	if (payload.substring(2) === 'B1') {
-		say(['Ok!', 'Now, we will learn about the enqueue method. The enqueue operation allows you to input an item at the end of the queue. It is like hanging up one shirt at the end of the queue of clothes.',
-		'Using the same queue as before, we perform the following operations.']);
+		say(['Ok!', 'Now, we will learn about the enqueue method. The enqueue operation allows you to input an item at the end of the queue. It is like hanging up one shirt at the end of the queue of clothes.']);
 		 say({
 			attachment: 'image',
 			url: 'https://i.postimg.cc/nrTSfVVx/enqueue.jpg'
@@ -150,8 +149,7 @@ const state = (payload, say, sendButton) => {
     
     	// peek method
     	if (payload.substring(2) === 'B3') {
-		say(['Ok!', 'The peek operation allows you to get the value of the next element to be dequeued, without dequeuing it. Think of it as taking a look at the first shirt in your closet without taking it out.', 
-		'Using the same queue as before, we perform the following operations.']);
+		say(['Ok!', 'The peek operation allows you to get the value of the next element to be dequeued, without dequeuing it. Think of it as taking a look at the first shirt in your closet without taking it out.']);
 		say({
 		attachment: 'image',
 		url: 'https://i.postimg.cc/mD1TrqzK/peek.jpg'

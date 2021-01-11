@@ -14,7 +14,7 @@ const start = (say, sendButton) => {
 
 const state = (payload, say, sendButton) => {
     
-    	say(payload);
+    	//say(payload);
 	//STACKS (start with 'A')
     	if (payload.substring(2) === 'A0') {
 	    say(['Stack is a collection of items that literally “stack” on top of each other. It follows the “Last In First Out” principle, meaning you could only add, remove, and look at the item on the top.',
@@ -191,7 +191,7 @@ const state = (payload, say, sendButton) => {
 	// next quiz question
 	if (payload.substring(2) === 'B6') {
 		say('The queue now is (front)😁👍🎉(back). What does the queue look like after two dequeues?').then(() => {
-		sendButton('Question', [{title: '🎉', payload: payload.substring(0,4) + 'a'}, {title: 'There is nothing in the queue.', payload: payload.substring(0,4) + 'b'}, {title: '😁', payload: payload.substring(0,4) + 'c'}]);
+		sendButton('Question', [{title: '🎉', payload: payload.substring(0,4) + 'a'}, {title: 'There is nothing left.', payload: payload.substring(0,4) + 'b'}, {title: '😁', payload: payload.substring(0,4) + 'c'}]);
 	});
 	}
 	// correct

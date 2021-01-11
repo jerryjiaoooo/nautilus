@@ -24,31 +24,29 @@ const state = (payload, say, sendButton) => {
     }
 	// push method
     	if (payload.substring(2) === 'A1') {
-   	 say(['Ok!', 'Now, we will learn about the push method. The push method adds an item on top of your existing stack. It’s like putting a new shirt onto your stack of shirts!']);
-	 say({
+   	 say(['Ok!', 'Now, we will learn about the push method. The push method adds an item on top of your existing stack. It’s like putting a new shirt onto your stack of shirts!',{
 		attachment: 'image',
 		url: 'https://i.postimg.cc/qq8C1dZ6/IMG-0230.jpg'
-	 }).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A2'}]);  
+	 }]).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A2'}]);  
 		});
     }
 	// pop method
      	if (payload.substring(2) === 'A2') {
-   	 say(['Ok!', 'Now, we will learn about the pop method. The pop method removes the topmost item from your stack. Remember: last in, first out. Also, you can’t use pop if your stack is empty! You can’t take away any shirts if you have none ;(', 'BONUS concept: most implementation of pop actually returns the item which you removed. Think of this as you’re holding onto the shirt that you just took off the stack for other purposes (perhaps you want to “push” it onto another stack!)','Using the same stack as before, we perform the following operations.']).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A3'}]);   ;
-   	 });
-	 say({
+   	 say(['Ok!', 'Now, we will learn about the pop method. The pop method removes the topmost item from your stack. Remember: last in, first out. Also, you can’t use pop if your stack is empty! You can’t take away any shirts if you have none ;(', 'BONUS concept: most implementation of pop actually returns the item which you removed. Think of this as you’re holding onto the shirt that you just took off the stack for other purposes (perhaps you want to “push” it onto another stack!)','Using the same stack as before, we perform the following operations.',{
 		attachment: 'image',
 		url: 'https://i.postimg.cc/K8msrGsL/IMG-0231.jpg'
-	 });
+	 }]).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A3'}]);   
+   	 });
+	 
 	 
    	
 	}
 	// peek method
      	if (payload.substring(2) === 'A3') {
-   	 say(['Ok!', 'Now, we will learn about the peek method. The Peek method returns the topmost item without altering the stack. Think of this as you’re grabbing onto the topmost shirt without taking it off the stack. You can do various things with the peek method, such as inspecting the different properties of the topmost item, like looking at the size of your topmost shirt!', 'Using the same stack as before, we perform the following operations.']);
-	 say({
+   	 say(['Ok!', 'Now, we will learn about the peek method. The Peek method returns the topmost item without altering the stack. Think of this as you’re grabbing onto the topmost shirt without taking it off the stack. You can do various things with the peek method, such as inspecting the different properties of the topmost item, like looking at the size of your topmost shirt!', 'Using the same stack as before, we perform the following operations.',{
 		attachment: 'image',
 		url: 'https://i.postimg.cc/X7jwsr4V/IMG-0233.jpg'
-	 }).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A4'}]);   
+	 }]).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'A4'}]);   
 	 });  
     }
 	if (payload.substring(2) === 'A4') {	
@@ -97,25 +95,22 @@ const state = (payload, say, sendButton) => {
 	//correct
 	if (payload.substring(2) === 'A6a') {
 		say('Correct!').then(()  => {
-		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
+		sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);
 	});
 	}
 	// incorrect
 	if (payload.substring(2) === 'A6b') {
 		say('Incorrect. Stacks are first in last out, meaning the last in, or the top of the stack, is the first out. Popping would return and remove 😁 from the stack.').then(()  => {
-		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
+		sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);
 	});
 	}
 	// incorrect
 	if (payload.substring(2) === 'A6c') {
 		say('Incorrect. Stacks are first in last out, meaning the last in, or the top of the stack, is the first out. Popping would return and remove 😁 from the stack.').then(() => {
-		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'A7'}]);
+		sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);
 	});
 	}
 	
-	if (payload.substring(2)==='A7'){
-		sendButton('Done with stacks! ', [{title: 'yes ', payload: payload.substring(0,2)+'Af'}]);
-	}
 
     //QUEUES (start with 'B')
 	if (payload.substring(2)==='B0'){
@@ -139,21 +134,19 @@ const state = (payload, say, sendButton) => {
 	if (payload.substring(2) === 'B2') {
 		say(['Ok!', 'The dequeue operation allows you to remove an item at the start of the queue. You can think of it as taking the first shirt out of your closet. However, be careful when you dequeue because the queue might be empty and there’s nothing you can take from it!', 
 		'BONUS concept: most implementation of dequeue actually returns the item which you removed. Think of this as you’re holding onto the shirt that you just took off the queue for other purposes (perhaps you want to “enqueue” it onto another queue!)', 
-		'Using the same queue as before, we perform the following operations.']);
-		say({
+		'Using the same queue as before, we perform the following operations.',{
 		attachment: 'image',
 		url: 'https://i.postimg.cc/WbC6FqHK/dequeue.jpg'
-		}).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B3'}]);   
+		}]).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B3'}]);   
 	});
     	}
     
     	// peek method
     	if (payload.substring(2) === 'B3') {
-		say(['Ok!', 'The peek operation allows you to get the value of the next element to be dequeued, without dequeuing it. Think of it as taking a look at the first shirt in your closet without taking it out.']);
-		say({
+		say(['Ok!', 'The peek operation allows you to get the value of the next element to be dequeued, without dequeuing it. Think of it as taking a look at the first shirt in your closet without taking it out.',{
 		attachment: 'image',
 		url: 'https://i.postimg.cc/mD1TrqzK/peek.jpg'
-		}).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B4'}]);   
+		}]).then(() => { sendButton('Got it?', [{title: 'Yes!', payload: payload.substring(0,2)+'B4'}]);   
 	});  
     	}
     
@@ -195,28 +188,24 @@ const state = (payload, say, sendButton) => {
 	// correct
 	if (payload.substring(2) === 'B6a') {
 		say('Correct!').then(() => {
-		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B7'}]);
+		sendButton('Done with queues! ', [{title: 'yes ', payload: payload.substring(0,2)+'Bf'}]);
 	});
 	}
 
 	// incorrect
 	if (payload.substring(2) === 'B6b') {
 		say('Incorrect. We only dequeued twice while there are three emojis in the queue. meaning there has to be one emoji left in the queue. ').then(() => {
-		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B7'}]);
+		sendButton('Done with queues! ', [{title: 'yes ', payload: payload.substring(0,2)+'Bf'}]);
 	});
 	}
     
     	// incorrect
 	if (payload.substring(2) === 'B6c') {
 		say('Incorrect. Queues are first in first out, meaning it dequeues from the beginning. So 😁 and 👍 are dequeued.').then(() => {
-		sendButton('Next Question?', [{title: 'Ready!', payload: payload.substring(0,2) + 'B7'}]);
+		sendButton('Done with queues! ', [{title: 'yes ', payload: payload.substring(0,2)+'Bf'}]);
 	});
 	}
 
-    	// end of queues
-	if (payload.substring(2)==='B7'){
-		sendButton('Done with queues! ', [{title: 'yes ', payload: payload.substring(0,2)+'Bf'}]);
-	}
     
     
     //END STATEMENTS
